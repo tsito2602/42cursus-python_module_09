@@ -36,7 +36,7 @@ class SpaceMission(BaseModel):
     budget_millions: float = Field(ge=1.0, le=10000.0)
 
     @model_validator(mode="after")
-    def validate_sapce_mission(self) -> Self:
+    def validate_space_mission(self) -> Self:
         if not self.mission_id.startswith("M"):
             raise ValueError('Mission ID must start with "M"')
 
@@ -44,7 +44,9 @@ class SpaceMission(BaseModel):
             member.rank in (Rank.COMMANDER, Rank.CAPTAIN)
             for member in self.crew
         ):
-            raise ValueError("Must have at least one Commander or Captain")
+            raise ValueError(
+                "Mission must have at least one Commander or Captain"
+            )
 
         experienced_cnt = sum(
             member.years_experience >= 5 for member in self.crew
@@ -88,7 +90,7 @@ def main() -> None:
             rank=Rank.OFFICER,
             age=29,
             specialization="Engineering",
-            years_experience=4,
+            years_experience=5,
         ),
     ]
     valid = SpaceMission(
@@ -134,7 +136,7 @@ def main() -> None:
                 rank=Rank.OFFICER,
                 age=29,
                 specialization="Engineering",
-                years_experience=4,
+                years_experience=5,
             ),
         ]
         _ = SpaceMission(
