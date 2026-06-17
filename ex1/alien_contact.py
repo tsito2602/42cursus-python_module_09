@@ -5,10 +5,10 @@ from typing import Self
 
 
 class ContactType(Enum):
-    RADIO = 1
-    VISUAL = 2
-    PHYSICAL = 3
-    TELEPATHIC = 4
+    RADIO = "radio"
+    VISUAL = "commander"
+    PHYSICAL = "physical"
+    TELEPATHIC = "telepathic"
 
 
 class AlienContact(BaseModel):
@@ -65,7 +65,7 @@ def main() -> None:
     print(f"Location: {valid.location}")
     print(f"Signal: {valid.signal_strength}/10")
     print(f"Duration: {valid.duration_minutes} minutes")
-    print(f"Wittness: {valid.witness_count}")
+    print(f"Witnesses: {valid.witness_count}")
 
     if valid.message_received:
         print(f"Message: '{valid.message_received}'")
