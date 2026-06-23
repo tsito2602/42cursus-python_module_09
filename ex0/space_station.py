@@ -24,18 +24,14 @@ def main() -> None:
         power_level=85.5,
         oxygen_level=92.3,
         last_maintenance=datetime(2026, 6, 11, 20, 0, 0),
-        # crew_size="6",
-        # power_level="85.5",
-        # oxygen_level="92.3",
-        # last_maintenance="2026-06-11T20:00:00",
     )
 
     print("Valid station created:")
     print(f"ID: {valid_station.station_id}")
     print(f"Name: {valid_station.name}")
-    print(f"Crew: {valid_station.crew_size}")
-    print(f"Power: {valid_station.power_level}")
-    print(f"Oxygen: {valid_station.oxygen_level}")
+    print(f"Crew: {valid_station.crew_size} people")
+    print(f"Power: {valid_station.power_level}%")
+    print(f"Oxygen: {valid_station.oxygen_level}%")
 
     status = (
         "Operational" if valid_station.is_operational else "Not operational"
@@ -49,7 +45,7 @@ def main() -> None:
     print("========================================")
 
     try:
-        valid_station = SpaceStation(
+        _ = SpaceStation(
             station_id="ISS001",
             name="International Space Station",
             crew_size=21,
