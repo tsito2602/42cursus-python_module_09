@@ -5,11 +5,11 @@ from typing import Self
 
 
 class Rank(Enum):
-    CADET = 1
-    OFFICER = 2
-    LIEUTENANT = 3
-    CAPTAIN = 4
-    COMMANDER = 5
+    CADET = "cadet"
+    OFFICER = "officer"
+    LIEUTENANT = "lieutenant"
+    CAPTAIN = "captain"
+    COMMANDER = "commander"
 
 
 class CrewMember(BaseModel):
@@ -113,7 +113,7 @@ def main() -> None:
     print("Crew members:")
     for member in valid.crew:
         print(
-            f"- {member.name} ({member.rank.name.lower()}) "
+            f"- {member.name} ({member.rank.value}) "
             f"- {member.specialization}"
         )
 
